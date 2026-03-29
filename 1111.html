@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>유럽 종합 조사 보고서 - 유럽 국가</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+
+            /* =========================
+               🔥 배경 설정 (여기만 수정하면 됨)
+               ========================= */
+
+            /* 👉 원하는 배경 이미지 넣기 */
+            --bg-image: url('https://i.namu.wiki/i/eH77maDP7Hr86JSYkKJtrU5iFVEwi_2bg4Wk4pIa3lTDPmjYn5Bady-7ldr2cKN3DFL672oJaZW5YTSvQNQd_z_pIP1jV8Dd1AoVgKlMjEAQVlwXPpS4YBZLrb6La7CTD4a9577mjfWK0GXybdUl9A.webp');
+
+            /* 👉 밝기 조절 (0 ~ 1) */
+            --bg-overlay: rgba(245, 241, 234, 0.358);
+
+            background-image: 
+                linear-gradient(var(--bg-overlay), var(--bg-overlay)),
+                var(--bg-image);
+
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+
+            /* ========================= */
+
+            min-height: 100vh;
+        }
+
+        header {
+            padding: 30px 50px;
+        }
+
+        h1 {
+            margin: 0;
+            color: #2c3e50;
+            font-size: 2.5rem;
+            font-weight: 800;
+        }
+
+        .flag-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 30px;
+            padding: 0 50px 50px 50px;
+            max-width: 1200px;
+        }
+
+        .flag-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: #333;
+            transition: transform 0.3s ease;
+        }
+
+        .flag-item:hover {
+            transform: translateY(-8px) scale(1.05);
+        }
+
+        .flag-item img {
+            width: 100px;
+            height: 66px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .country-name {
+            margin-top: 12px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>유럽 국가</h1>
+</header>
+
+<main class="flag-container" id="flag-grid"></main>
+
+<script>
+const europeanCountries = [
+    { code: 'eu', name: '유럽 연합' },
+    { code: 'de', name: '독일' },
+    { code: 'fr', name: '프랑스' },
+    { code: 'es', name: '스페인' },
+    { code: 'it', name: '이탈리아' },
+    { code: 'fi', name: '핀란드' },
+    { code: 'gb', name: '영국' },
+    { code: 'se', name: '스웨덴' },
+    { code: 'no', name: '노르웨이' },
+    { code: 'dk', name: '덴마크' }
+];
+
+const gridContainer = document.getElementById('flag-grid');
+
+europeanCountries.forEach(country => {
+    const link = document.createElement('a');
+    link.href = `${country.code}.html`;
+    link.className = 'flag-item';
+
+    const img = document.createElement('img');
+    img.src = `https://flagcdn.com/w160/${country.code}.png`;
+
+    const span = document.createElement('span');
+    span.className = 'country-name';
+    span.textContent = country.name;
+
+    link.appendChild(img);
+    link.appendChild(span);
+    gridContainer.appendChild(link);
+});
+</script>
+
+</body>
+</html>
